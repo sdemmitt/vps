@@ -2,7 +2,7 @@
 
 This masternode installation script vastly simplifies the setup of a Airin masternode running on a virtual private server (VPS), and it also adds a number of other powerful features, including:
 
-* IPv6 Support - Note: At this time Airin does not support IPV6 so IPV4 is enabled by default. Additional IPV4 addresses can be added for multiple masternodes on a single vps but this process must be manually configured.
+* IPv6 Support - **Note: At this time Airin does not support IPV6 so IPV4 is enabled by default. Additional IPV4 addresses can be added for multiple masternodes on a single vps but this process must be manually configured.**
 * Installs 1-100 (or more!) Airin masternodes in parallel on one VPS, with individual airin.conf and data directories
 * It can install masternodes for other coins on the same VPS as Airin
 * 100% auto-compilation and 99% of configuration on the masternode side of things
@@ -60,7 +60,10 @@ The _install.sh_ script support the following parameters:
 
 **Generate Private Key**
 Note: The private key will need to be added to the airin_n1.conf file (located on the vps) and the masternode.conf file (located on the Airin Wallet) 
-run /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode genkey
+
+```bash
+/usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode genkey
+```
 
 **Edit Configuration File**
 
