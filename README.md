@@ -58,36 +58,58 @@ The _install.sh_ script support the following parameters:
 
 ## After Installation on VPS
 
-Generate Private Key
+**Generate Private Key**
 Note: The private key will need to be added to the airin_n1.conf file (located on the vps) and the masternode.conf file (located on the Airin Wallet) 
 run /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode genkey
 
-Edit Configuration File 
-run nano /etc/masternodes/airin_n1.conf
+**Edit Configuration File**
 
-Add IP
+```bash
+nano /etc/masternodes/airin_n1.conf
+```
+
+**Add IP**
 Replace the following lines with your information:
+
+```
 bind=YOUR_VPS_IPV4_ADDRESS:18808
+```
 
-Add Private Key
+**Add Private Key**
 Replace the following lines with your information:
+
+```
 masternodeprivkey=YOUR_MASTERNODE_PRIVATE_KEY
+```
 
-Save and Close the File
+**Save and Close the File**
+
+```
 CTRL+X → Y → ENTER
+```
 
-Reboot
-run sudo reboot
+**Reboot**
+
+```bash
+sudo reboot
+```
 
 To retrieve masternode info:
-run /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf getinfo
+
+```bash
+/usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf getinfo
+```
 
 To retrieve masternode status:
-run /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode status
+
+```bash
+/usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode status
+```
 
 ## After Installation on Airin Wallet
 
 **Create Collateral Transaction**
+
 Once the wallet is open on your local computer, generate a new receive address and label it however you want to identify your masternode rewards (e.g., Airin-MN-1). This label will show up in your transactions each time you receive a block reward.
 Click the Request payment button, and copy the address.
 
@@ -100,17 +122,21 @@ masternode outputs
 
 It should print something like this:
 
+```
 {
 “e73c2368c132b1334d1c4e2346adcdf81dc37a7002e6fr6295a1ae90026a35ce”:“1”
 }
-
+```
 The long string is the transaction id of your payment and the number is transaction index. Save them too, you will use them shortly.
 Note that transaction id and index number do not contain quotes. In the example above transaction id is: e73c2368c132b1334d1c4e2346adcdf81dc37a7002e6fr6295a1ae90026a35ce.
 
 **Go to Tools → Masternode configuration file. It will open your masternode config file.**
 
 In a new line type your masternode data, the syntax is as following:
+
+```
 ALIAS YOUR_VPS_IPV4_ADDRESS:18808 YOUR_MASTERNODE_PRIVATE_KEY TRX_ID_OF_YOUR_PAYMENT TRX_INDEX
+```
 
 You can copy paste the line above and replace with your own ip, privkey, transaction id and index. Note that each data is separated by space, so do not introduce any space yourself. For example, giving the following alias is wrong.
 My alias
