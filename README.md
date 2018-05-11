@@ -24,8 +24,6 @@ This project was forked from https://github.com/masternodes/vps. @marsmensch (Fl
 BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
 ```
 
-## Installation
-
 ## Installation on VPS
 
 SSH to your VPS and clone the Github repository:
