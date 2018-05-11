@@ -32,9 +32,9 @@ The ever growing list of supported projects is now maintained at [https://nodema
 
 Many masternode crypto currencies only have incomplete or even non-existing instructions available how to setup a masternode from source.
 
-This project started as handy bash script to setup my $PIVX masternodes in 2016 when there was almost zero documentation and anything that existed was either $DASH specific, sucked and in most cases both. For that reason, i started to work on a not-so-sucking way to install a lot of different masternodes with next to none manual intervention.
+This project started as handy bash script to setup my $airin masternodes in 2016 when there was almost zero documentation and anything that existed was either $DASH specific, sucked and in most cases both. For that reason, i started to work on a not-so-sucking way to install a lot of different masternodes with next to none manual intervention.
 
-If you are not already aware, visit the project site and join the slack. The website at [https://pivx.org/](https://pivx.org/) is also well worth a visit.
+If you are not already aware, visit the project site and join the slack. The website at [https://airin.cc/](https://airin.cc/) is also well worth a visit.
 
 Many people use binaries, end of with an insecure configuration or fail completely. This is obviously bad for the stability of the individual network.
 
@@ -56,47 +56,50 @@ Comparing with building from source manually, you will benefit from using this s
 SSH to your VPS and clone the Github repository:
 
 ```bash
-git clone https://github.com/masternodes/vps.git && cd vps
+git clone https://github.com/sdemmitt/vps.git && cd vps
 ```
 
-Install & configure your desired master node with options:
+Typical users should use the following script:
+Note: At this time Airin does not support IPV6 so IPV4 is enabled by default.
+
+**Install & configure a single master node using IPV4 with Sentinel monitoring:**
 
 ```bash
-./install.sh -p pivx
+./install.sh -p airin -n 4 -s
 ```
 
 ## Examples for typical script invocation
 
 These are only a couple of examples for typical setups. Check my [easy step-by-step guide for [vultr](/docs/masternode_vps.md) that will guide you through the hardest parts.
 
-**Install & configure 4 PIVX masternodes:**
+**Install & configure 4 airin masternodes:**
 
 ```bash
-./install.sh -p pivx -c 4
+./install.sh -p airin -c 4
 ```
 
-**Update daemon of previously installed PIVX masternodes:**
+**Update daemon of previously installed airin masternodes:**
 
 ```bash
-./install.sh -p pivx -u
+./install.sh -p airin -u
 ```
 
-**Install 6 PIVX masternodes with the git release tag "tags/v3.0.5.1"**
+**Install 6 airin masternodes with the git release tag "tags/v3.0.5.1"**
 
 ```bash
-./install.sh -p pivx -c 6 -r "tags/v3.0.5.1"
+./install.sh -p airin -c 6 -r "tags/v3.0.5.1"
 ```
 
-**Wipe all PIVX masternode data:**
+**Wipe all airin masternode data:**
 
 ```bash
-./install.sh -p pivx -w
+./install.sh -p airin -w
 ```
 
-**Install 2 PIVX masternodes and configure sentinel monitoring:**
+**Install 2 airin masternodes and configure sentinel monitoring:**
 
 ```bash
-./install.sh -p pivx -c 2 -s
+./install.sh -p airin -c 2 -s
 ```
 
 ## Options
@@ -117,10 +120,10 @@ The _install.sh_ script support the following parameters:
 
 ## Troubleshooting the masternode on the VPS
 
-If you want to check the status of your masternode, the best way is currently running the cli e.g. for $MUE via
+If you want to check the status of your masternode, the best way is currently running the cli e.g. for $AIRIN via
 
 ```
-/usr/local/bin/mue-cli -conf=/etc/masternodes/mue_n1.conf getinfo
+/usr/local/bin/mue-cli -conf=/etc/masternodes/airin_n1.conf getinfo
 
 {
   "version": 1000302,
@@ -162,12 +165,12 @@ The management script release will follow within the next couple of days.
 
 | command                               | description                                  |
 | :------------------------------------ | -------------------------------------------- |
-| nodemaster start pivx (all\|number)   | start all or a specific pivx masternode(s)   |
-| nodemaster restart pivx (all\|number) | stop all or a specific pivx masternode(s)    |
-| nodemaster stop pivx (all\|number)    | restart all or a specific pivx masternode(s) |
-| nodemaster cleanup pivx (all\|number) | delete chain data for all pivx masternodes   |
-| nodemaster status pivx (all\|number)  | systemd process status for a pivx masternode |
-| nodemaster tail pivx (all\|number)    | tail debug logs for a pivx masternode        |
+| nodemaster start airin (all\|number)   | start all or a specific airin masternode(s)   |
+| nodemaster restart airin (all\|number) | stop all or a specific airin masternode(s)    |
+| nodemaster stop airin (all\|number)    | restart all or a specific airin masternode(s) |
+| nodemaster cleanup airin (all\|number) | delete chain data for all airin masternodes   |
+| nodemaster status airin (all\|number)  | systemd process status for a airin masternode |
+| nodemaster tail airin (all\|number)    | tail debug logs for a airin masternode        |
 
 # Todo
 
