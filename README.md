@@ -1,10 +1,22 @@
-# Nodemaster
+﻿# Airin Masternode VPS Installation
 
-The **Nodemaster** scripts is a collection of utilities to manage, setup and update masternode instances.
+This masternode installation script vastly simplifies the setup of a Airin masternode running on a virtual private server (VPS), and it also adds a number of other powerful features, including:
 
-I am quite confident this is the single best and almost effortless way to setup different crypto masternodes, without bothering too much about the setup part.
+* IPv6 Support - Note: At this time Airin does not support IPV6 so IPV4 is enabled by default. Additional IPV4 addresses can be added for multiple masternodes on a single vps but this process must be manually configured.
+* Installs 1-100 (or more!) Airin masternodes in parallel on one VPS, with individual airin.conf and data directories
+* It can install masternodes for other coins on the same VPS as Airin
+* 100% auto-compilation and 99% of configuration on the masternode side of things
+* Automatically compiling from the latest Airin release tag, or another tag can be specified
+* Some security hardening is done, including firewalling and a separate user, increasing security
+* Automatic startup for all masternode daemons
 
-If this script helped you in any way, please contribute some feedback. BTC donations also welcome and never forget:
+Some notes and requirements:
+
+* Script has only been tested on a Vultr VPS, but should work almost anywhere where IPV4 or IPv6 addresses are available
+* Currently only Ubunto 16.04 Linux is supported
+* This script needs to run as root or with sudo, the masternodes will and should not!
+
+This project was forked from https://github.com/masternodes/vps. @marsmensch (Florian) is the primary author behind this VPS installation script for masternodes. If you would like to donate to him, you can use the BTC address below
 
 **Have fun, this is crypto after all!**
 
@@ -12,46 +24,9 @@ If this script helped you in any way, please contribute some feedback. BTC donat
 BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
 ```
 
-
-Feel free to use my reflink to signup and receive a bonus w/ vultr:
-<a href="https://www.vultr.com/?ref=6903922"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
-
-## Supported masternode projects
-
-The ever growing list of supported projects is now maintained at [https://nodemaster-vps.com/supported-masternode-projects/](https://nodemaster-vps.com/supported-masternode-projects/). 
-
----
-
-**NOTE on the VPS choice for starters**
-
-**Vultr** is highly recommended for this kind of setup. I created an [easy step-by-step guide for the VPS provider vultr](/docs/masternode_vps.md) that will guide you through the hardest parts.
-
----
-
-## About / Background
-
-Many masternode crypto currencies only have incomplete or even non-existing instructions available how to setup a masternode from source.
-
-This project started as handy bash script to setup my $airin masternodes in 2016 when there was almost zero documentation and anything that existed was either $DASH specific, sucked and in most cases both. For that reason, i started to work on a not-so-sucking way to install a lot of different masternodes with next to none manual intervention.
-
-If you are not already aware, visit the project site and join the slack. The website at [https://airin.cc/](https://airin.cc/) is also well worth a visit.
-
-Many people use binaries, end of with an insecure configuration or fail completely. This is obviously bad for the stability of the individual network.
-
-After doing hundreds of masternode installations in the past two years, i decided to share some of my existing auto-install and management scripts with the community to work on a generalised & reliable setup for all masternode coins.
-
-Comparing with building from source manually, you will benefit from using this script in the following way(s):
-
-* 100% auto-compilation and 99% of configuration on the masternode side of things. It is currently only tested on a vultr VPS but should work almost anywhere where IPv6 addresses are available
-* Developed with recent Ubuntu versions in mind, currently only 16.04 is supported
-* Installs 1-100 (or more!) masternodes in parallel on one machine, with individual config and data
-* Compilation is currently from source for the desired git repo tag (configurable via config files)
-  Some security hardening is done, including firewalling and a separate user
-* Automatic startup for all masternode daemons
-* This script needs to run as root, the masternodes will and should not!
-* It's ipv6 enabled, tor/onion will follow
-
 ## Installation
+
+## Installation on VPS
 
 SSH to your VPS and clone the Github repository:
 
@@ -60,46 +35,11 @@ git clone https://github.com/sdemmitt/vps.git && cd vps
 ```
 
 Typical users should use the following script:
-Note: At this time Airin does not support IPV6 so IPV4 is enabled by default.
 
-**Install & configure a single master node using IPV4 with Sentinel monitoring:**
-
-```bash
-./install.sh -p airin -n 4 -s
-```
-
-## Examples for typical script invocation
-
-These are only a couple of examples for typical setups. Check my [easy step-by-step guide for [vultr](/docs/masternode_vps.md) that will guide you through the hardest parts.
-
-**Install & configure 4 airin masternodes:**
+**Install & configure a single master node using IPV4 with Sentinel monitoring and activate node after installation:**
 
 ```bash
-./install.sh -p airin -c 4
-```
-
-**Update daemon of previously installed airin masternodes:**
-
-```bash
-./install.sh -p airin -u
-```
-
-**Install 6 airin masternodes with the git release tag "tags/v3.0.5.1"**
-
-```bash
-./install.sh -p airin -c 6 -r "tags/v3.0.5.1"
-```
-
-**Wipe all airin masternode data:**
-
-```bash
-./install.sh -p airin -w
-```
-
-**Install 2 airin masternodes and configure sentinel monitoring:**
-
-```bash
-./install.sh -p airin -c 2 -s
+./install.sh -p airin -n 4 -s -x
 ```
 
 ## Options
@@ -118,7 +58,74 @@ The _install.sh_ script support the following parameters:
 | --help       | -h           | --                  | print help info                                                     |
 | --startnodes | -x           | --                  | starts masternode(s) after installation                             |
 
-## Troubleshooting the masternode on the VPS
+## After Installation on VPS
+
+Generate Private Key
+Note: The private key will need to be added to the airin_n1.conf file (located on the vps) and the masternode.conf file (located on the Airin Wallet) 
+run /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode genkey
+
+Edit Configuration File 
+run nano /etc/masternodes/airin_n1.conf
+
+Add IP
+Replace the following lines with your information:
+bind=YOUR_VPS_IPV4_ADDRESS:18808
+
+Add Private Key
+Replace the following lines with your information:
+masternodeprivkey=YOUR_MASTERNODE_PRIVATE_KEY
+
+Save and Close the File
+CTRL+X → Y → ENTER
+
+Reboot
+run sudo reboot
+
+To retrieve masternode info:
+run /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf getinfo
+
+To retrieve masternode status:
+run /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode status
+
+## After Installation on Airin Wallet
+
+**Create Collateral Transaction**
+Once the wallet is open on your local computer, generate a new receive address and label it however you want to identify your masternode rewards (e.g., Airin-MN-1). This label will show up in your transactions each time you receive a block reward.
+Click the Request payment button, and copy the address.
+
+Now go to the Send tab, paste the copied address, and send exactly 1,000 AIRIN to it in a single transaction. Wait for it to confirm on the blockchain. This is the collateral transaction that will be locked and paired with your new masternode.
+
+**Go to Tools → Debug Console**
+
+In text box below run the following command
+masternode outputs
+
+It should print something like this:
+
+{
+“e73c2368c132b1334d1c4e2346adcdf81dc37a7002e6fr6295a1ae90026a35ce”:“1”
+}
+
+The long string is the transaction id of your payment and the number is transaction index. Save them too, you will use them shortly.
+Note that transaction id and index number do not contain quotes. In the example above transaction id is: e73c2368c132b1334d1c4e2346adcdf81dc37a7002e6fr6295a1ae90026a35ce.
+
+**Go to Tools → Masternode configuration file. It will open your masternode config file.**
+
+In a new line type your masternode data, the syntax is as following:
+ALIAS YOUR_VPS_IPV4_ADDRESS:18808 YOUR_MASTERNODE_PRIVATE_KEY TRX_ID_OF_YOUR_PAYMENT TRX_INDEX
+
+You can copy paste the line above and replace with your own ip, privkey, transaction id and index. Note that each data is separated by space, so do not introduce any space yourself. For example, giving the following alias is wrong.
+My alias
+Remember that transaction id and index do not contain any quotes
+Save and close the config file. Restart the wallet.
+
+**Go to «Masternodes» tab (Settings → Options → Wallet → Show Masternodes Tab). You should see your configured masternode as missing. Click on «Start Missing», give your passphrase and confirm.**
+
+Now you should see your masternode as «Pre_Enabled» or «Enabled»
+If so, you are all set. It will start getting rewards in around 24 hours.
+Happy Collecting your Masternode Rewards!
+
+## Troubleshooting the Masternode on the VPS
 
 If you want to check the status of your masternode, the best way is currently running the cli e.g. for $AIRIN via
 
@@ -152,38 +159,6 @@ I activated the "[issues](https://github.com/masternodes/vps/issues)" option on 
 I might not be able to reply immediately, but i do usually within a couple of days at worst. I will also happily take any pull requests that make masternode installations easier for everyone ;-)
 
 If this script helped you in any way, please contribute some feedback. BTC donations also welcome and never forget:
-
-**Have fun, this is crypto after all!**
-
-```
-BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
-```
-
-## Management script (not yet implemented)
-
-The management script release will follow within the next couple of days.
-
-| command                               | description                                  |
-| :------------------------------------ | -------------------------------------------- |
-| nodemaster start airin (all\|number)   | start all or a specific airin masternode(s)   |
-| nodemaster restart airin (all\|number) | stop all or a specific airin masternode(s)    |
-| nodemaster stop airin (all\|number)    | restart all or a specific airin masternode(s) |
-| nodemaster cleanup airin (all\|number) | delete chain data for all airin masternodes   |
-| nodemaster status airin (all\|number)  | systemd process status for a airin masternode |
-| nodemaster tail airin (all\|number)    | tail debug logs for a airin masternode        |
-
-# Todo
-
-* provide my Dockerfile & Vagrantfile
-* write more test cases
-* implement a binary option (?)
-* output all supported cryptos as list within help
-
-# Errors
-
-* currently not fully idempotent
-
-Ping me at contact@marsmenschen.com for questions and send some crypto my way if you are happy.
 
 **Have fun, this is crypto after all!**
 
