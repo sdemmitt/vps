@@ -13,7 +13,7 @@ This masternode installation script vastly simplifies the setup of a Airin maste
 Some notes and requirements:
 
 * Script has only been tested on a Vultr VPS, but should work almost anywhere where IPV4 or IPv6 addresses are available
-* Currently only Ubunto 16.04 Linux is supported
+* Currently only Ubuntu 16.04 Linux is supported
 * This script needs to run as root or with sudo, the masternodes will and should not!
 
 This project was forked from https://github.com/masternodes/vps. @marsmensch (Florian) is the primary author behind this VPS installation script for masternodes. If you would like to donate to him, you can use the BTC address below
