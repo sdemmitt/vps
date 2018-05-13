@@ -264,13 +264,13 @@ You only have a few steps remaining to complete your masternode configuration.
 ## Configure masternode configuration files
 Since this installation method supports multiple masternodes, the airin configuration files have a node number added to them (e.g., airin_n1.conf, airin_n2.conf, airin_n3.conf), stored in the /etc/masternodes directory. If you have a single masternode on the VPS, you will only need to edit /etc/masternodes/airin_n1.conf.
 
-###A. Edit Configuration File**
+### A. Edit Configuration File**
 
 ```bash
 nano /etc/masternodes/airin_n1.conf
 ```
 
-###B. Add IP**
+### B. Add IP**
 
 Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
 
@@ -278,7 +278,7 @@ Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
 bind=YOUR_VPS_IPV4_ADDRESS:18808
 ```
 
-###C. Add Private Key**
+### C. Add Private Key**
 
 Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
 
@@ -286,13 +286,13 @@ Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
 masternodeprivkey=YOUR_MASTERNODE_PRIVATE_KEY
 ```
 
-###D. Save and Close the File**
+### D. Save and Close the File**
 
 ```
 CTRL+X → Y → ENTER
 ```
 
-###E. Repeat Steps A - D**
+### E. Repeat Steps A - D**
 
 For each additional masternode created, repeat steps A - D with the following changes:
 
@@ -302,7 +302,7 @@ For each additional masternode created, repeat steps A - D with the following ch
 
 Note: IP addresses cannot not be used more than once.
 
-###F. Restart VPS**
+### F. Restart VPS**
 
 ```bash
 sudo reboot
