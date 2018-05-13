@@ -33,7 +33,7 @@ For new masternode owners, **Vultr** is recommended as a VPS hosting provider, b
 
 You can use the following referral link to sign up with Vultr for VPS hosting:
 
-<a href="https://www.vultr.com/?ref=7316561"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+<a href="https://www.vultr.com/?ref=7422842"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
 ## Deploy a New System
 
