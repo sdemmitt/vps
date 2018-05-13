@@ -116,13 +116,13 @@ Copy your password for SSH access from the server details page.
 
 Now open PuTTY to add the server.
 
-<img src="docs/images/masternode_vps/login-to-vps-via-PuTTY.png" alt="login to VPS" class="inline"/>
+<img src="docs/images/masternode_vps/login-to-vps-via-putty.png" alt="login to VPS" class="inline"/>
 
 Enter the IP address in the Host Name field, and enter the server name you wish to use for this VPS (e.g., MN01) to Saved Sessions. Click save.
 
 Click the open button. When the console has opened, click Yes in the PuTTY Security Alert box.
 
-<img src="docs/images/masternode_vps/PuTTY-Security-Alert.png" alt="Alert from PuTTY" class="inline"/>
+<img src="docs/images/masternode_vps/putty-security-alert.png" alt="Alert from PuTTY" class="inline"/>
 
 Now enter your server login details provided in your Vultr account.
 You cannot Ctrl+V to paste in the console. Either right click the mouse or type shift+insert (sometimes
