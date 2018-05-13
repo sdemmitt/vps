@@ -142,11 +142,13 @@ ssh -l root <IP address>
 
 ## Installation on VPS
 
+### A. Login 
+
 Login to your newly installed node as "root".
 
 <img src="docs/images/masternode_vps/first-ssh-session.png" alt="VPS sizing" class="inline"/>
 
-**Edit Network Interfaces**
+### B. Edit Network Interfaces
 
 ```bash
 nano /etc/network/interfaces
@@ -159,32 +161,32 @@ Copy and paste the network configuration that was previously saved in the text e
 Remember: You cannot Ctrl+V to paste in the console. Either right click the mouse or type shift+insert (sometimes
 on keyboard it will just be INS key)
 
-**Save and Close the File**
+### C. Save and Close the File
 
 ```
 CTRL+X → Y → ENTER
 ```
 
-**Configure Networking Changes**
+### D. Configure Networking Changes
 
 ```bash
 ifup ens3:1
 ifup ens3:2
 ```
 
-**Clone the Github Repository to Install Masternodes**
+### E. Clone the Github Repository to Install Masternodes
 
 ```bash
 git clone https://github.com/sdemmitt/vps.git && cd vps
 ```
 
-**Install 3 Airin masternodes using IPv4 and configure sentinel monitoring:**
+### F. Install 3 Airin masternodes using IPv4 and configure sentinel monitoring:
 
 ```bash
 ./install.sh -p airin -n 4 -c 3 -s 
 ```
 
-## Additional examples
+### Additional examples
 
 **Install 2 Airin masternodes using IPv4 and configure sentinel monitoring:**
 
@@ -198,7 +200,7 @@ git clone https://github.com/sdemmitt/vps.git && cd vps
 ./install.sh -p airin -n 4 -c 1 -s
 ```
 
-## Options
+### Options
 
 The _install.sh_ script support the following parameters:
 
@@ -264,13 +266,13 @@ You only have a few steps remaining to complete your masternode configuration.
 ## Configure masternode configuration files
 Since this installation method supports multiple masternodes, the airin configuration files have a node number added to them (e.g., airin_n1.conf, airin_n2.conf, airin_n3.conf), stored in the /etc/masternodes directory. If you have a single masternode on the VPS, you will only need to edit /etc/masternodes/airin_n1.conf.
 
-### A. Edit Configuration File**
+### A. Edit Configuration File
 
 ```bash
 nano /etc/masternodes/airin_n1.conf
 ```
 
-### B. Add IP**
+### B. Add IP
 
 Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
 
@@ -278,7 +280,7 @@ Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
 bind=YOUR_VPS_IPV4_ADDRESS:18808
 ```
 
-### C. Add Private Key**
+### C. Add Private Key
 
 Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
 
@@ -286,13 +288,13 @@ Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
 masternodeprivkey=YOUR_MASTERNODE_PRIVATE_KEY
 ```
 
-### D. Save and Close the File**
+### D. Save and Close the File
 
 ```
 CTRL+X → Y → ENTER
 ```
 
-### E. Repeat Steps A - D**
+### E. Repeat Steps A - D
 
 For each additional masternode created, repeat steps A - D with the following changes:
 
@@ -302,7 +304,7 @@ For each additional masternode created, repeat steps A - D with the following ch
 
 Note: IP addresses cannot not be used more than once.
 
-### F. Restart VPS**
+### F. Restart VPS
 
 ```bash
 sudo reboot
