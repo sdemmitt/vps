@@ -3,7 +3,7 @@
 This masternode installation script vastly simplifies the setup of a Airin masternode running on a virtual private server (VPS), and it also adds a number of other powerful features, including:
 
 * Support for multiple IPv4 Addresses - **Note: At this time Airin does not support IPV6 so IPV4 is enabled by default.**
-* Installs 1-100 (or more!) Airin masternodes in parallel on one VPS, with individual airin.conf and data directories
+* Installs 1-3 Airin masternodes in parallel on one VPS, with individual airin.conf and data directories
 * It can install masternodes for other coins on the same VPS as Airin
 * 100% auto-compilation and 99% of configuration on the masternode side of things
 * Automatically compiling from the latest Airin release tag, or another tag can be specified
@@ -75,7 +75,9 @@ Once PuTTY is installed, return to the Vultr dashboard to get the login details 
 Go to Settings on the server details page. The IPv4 section will appear. 
 
 Click 'Add Another IPv4 Address'. When prompted, click 'Add IPv4 Address'.
+
 Repeat for each additional masternode. The maximum number of IPv4 addresses is 3 per VPS.
+
 Note: There is an additional charge for each IPv4 address added. 
 
 <img src="docs/images/masternode_vps/activating-additional-features--ipv6-.png" alt="VPS sizing" class="inline"/>
@@ -228,13 +230,14 @@ CTRL+X → Y → ENTER
 ```
 
 **F) Repeat Steps A - E**
+
 For each additional masternode created, repeat steps A - E with the following changes:
 
-*Replace 'airin_n1.conf' with 'airin_n2.conf' or 'airin_n3.conf'
+* Replace 'airin_n1.conf' with 'airin_n2.conf' or 'airin_n3.conf'
 
-*Use the added IPv4 addresses created in Vultr for each added masternode. 
+* Use the added IPv4 addresses created in Vultr earlier for each added masternode. 
 
-**Note: IP addresses should not be used more than once.**
+**Note: IP addresses cannot not be used more than once.**
 
 **G) Reboot**
 
