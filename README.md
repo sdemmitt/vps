@@ -96,6 +96,7 @@ Save this for later. This will replace the /etc/network/interfaces configuration
 ## Accessing your VPS via SSH
 
 Copy your password for SSH access from the server details page.
+
 <img src="docs/images/masternode_vps/accessing-your-vps-via-ssh.png" alt="check hostname and password" class="inline"/>
 
 Now open PuTTY to add the server.
@@ -105,6 +106,7 @@ Now open PuTTY to add the server.
 Enter the IP address in the Host Name field, and enter the server name you wish to use for this VPS (e.g., MN01) to Saved Sessions. Click save.
 
 Click the open button. When the console has opened, click Yes in the PuTTY Security Alert box.
+
 <img src="docs/images/masternode_vps/PuTTY-Security-Alert.png" alt="Alert from PuTTY" class="inline"/>
 
 Now enter your server login details provided in your Vultr account.
@@ -125,6 +127,8 @@ ssh -l root <IP address>
 
 ## Installation on VPS
 
+After logging into VPS through SSH:
+
 **Edit Network Interfaces**
 
 ```bash
@@ -133,7 +137,7 @@ nano /etc/network/interfaces
 
 Delete each line shown. (Press Del Key)
 
-Copy and paste the network configuration that was previously saved in the text editor. 
+Copy and paste the network configuration that was previously saved in the text editor. (Retrieve Networking Configuration Step)
 
 Remember: You cannot Ctrl+V to paste in the console. Either right click the mouse or type shift+insert (sometimes
 on keyboard it will just be INS key)
@@ -151,13 +155,13 @@ ifup ens3:1
 ifup ens3:2
 ```
 
-Clone the Github Repository to Install Masternodes:
+**Clone the Github Repository to Install Masternodes**
 
 ```bash
 git clone https://github.com/sdemmitt/vps.git && cd vps
 ```
 
-**Install 3 Airin masternodes using IPV4 and configure sentinel monitoring:**
+**Install 3 Airin masternodes using IPv4 and configure sentinel monitoring:**
 
 ```bash
 ./install.sh -p airin -n 4 -c 3 -s 
@@ -165,13 +169,13 @@ git clone https://github.com/sdemmitt/vps.git && cd vps
 
 ## Additional examples
 
-**Install 2 Airin masternodes using IPV4 and configure sentinel monitoring:**
+**Install 2 Airin masternodes using IPv4 and configure sentinel monitoring:**
 
 ```bash
 ./install.sh -p airin -n 4 -c 2 -s
 ```
 
-**Install 1 Airin masternode using IPV4 and configure sentinel monitoring:**
+**Install 1 Airin masternode using IPv4 and configure sentinel monitoring:**
 
 ```bash
 ./install.sh -p airin -n 4 -c 1 -s
@@ -300,18 +304,18 @@ If you want to check the info of your masternode, the best way is currently runn
 /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf getinfo
 
 {
-  "version": 1000302,
-  "protocolversion": 70701,
+  "version": 120201,
+  "protocolversion": 70206,
   "walletversion": 61000,
   "balance": 0.00000000,
   "privatesend_balance": 0.00000000,
-  "blocks": 209481,
+  "blocks": 8679,
   "timeoffset": 0,
-  "connections": 5,
+  "connections": 19,
   "proxy": "",
-  "difficulty": 42882.54964804553,
+  "difficulty": 45.94715393716314,
   "testnet": false,
-  "keypoololdest": 1511380627,
+  "keypoololdest": 1526099573,
   "keypoolsize": 1001,
   "paytxfee": 0.00000000,
   "relayfee": 0.00010000,
@@ -325,6 +329,7 @@ To retrieve masternode status:
 /usr/local/bin/airin-cli -conf=/etc/masternodes/airin_n1.conf masternode status
 ```
 
+The rpcport used in airin_n1.conf (airin_n2.conf, airin_n3.conf) files must be unique. Increase the port number +1 if any values match across each masternode. 
 
 ## Issues and Questions
 Please open a GitHub Issue if there are problems with this installation method. Check the Airin Discord channel for support or assistance.
