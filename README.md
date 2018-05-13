@@ -1,9 +1,9 @@
-﻿# Airin Masternode VPS Installation
+﻿# Airin Masternode - VPS Installation - Multiple IPv4
 
 This masternode installation script vastly simplifies the setup of a Airin masternode running on a virtual private server (VPS), and it also adds a number of other powerful features, including:
 
-* Support for multiple IPv4 Addresses - **Note: At this time Airin does not support IPV6 so IPV4 is enabled by default.**
 * Installs 1-3 Airin masternodes in parallel on one VPS, with individual airin.conf and data directories
+* Support for multiple IPv4 Addresses - **Note: At this time Airin does not support IPV6 so IPV4 is enabled by default.**
 * It can install masternodes for other coins on the same VPS as Airin
 * 100% auto-compilation and 99% of configuration on the masternode side of things
 * Automatically compiling from the latest Airin release tag, or another tag can be specified
@@ -25,9 +25,9 @@ This project was forked from https://github.com/masternodes/vps. @marsmensch (Fl
 BTC  33ENWZ9RCYBG7nv6ac8KxBUSuQX64Hx3x3
 ```
 
-# Install guide on vultr
+# Install Guide on Vultr
 
-## How to get VPS server
+## How to Get a VPS Server
 
 For new masternode owners, **Vultr** is recommended as a VPS hosting provider, but other providers that allow direct root SSH login access and offer Ubunto 16.04 may work.
 
@@ -35,25 +35,25 @@ You can use the following referral link to sign up with Vultr for VPS hosting:
 
 <a href="https://www.vultr.com/?ref=7316561"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
-## Deploy a new system
+## Deploy a New System
 
 First, create a new VPS by clicking that small "+" button.
 
 <img src="docs/images/masternode_vps/deploy-a-new-system.png" alt="VPS creation" class="inline"/>
 
-## Location choice
+## Location Choice
 
 You can choose any location. You may wish to have it hosted in a city/country near you, or choose a different area to help with the global decentralization of the Airin masternode network.
 
 <img src="docs/images/masternode_vps/location-choice.png" alt="VPS location choice" class="inline"/>
 
-## Linux distribution (Ubuntu 16.04 LTS)
+## Linux Distribution (Ubuntu 16.04 LTS)
 
 Select Ubuntu 16.04.
 
 <img src="docs/images/masternode_vps/linux-distribution--ubuntu-1604-lts-.png" alt="VPS location choice" class="inline"/>
 
-## VPS size
+## VPS Size
 
 The 25 GB SSD / 1024MBB Memory instance is enough for 2-3 masternodes. You may need more memory as the Airin blockchain grows over time, or if you want to run more masternodes.
 
