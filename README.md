@@ -59,13 +59,14 @@ The 25 GB SSD / 1024MBB Memory instance is enough for 2-3 masternodes. You may n
 
 <img src="docs/images/masternode_vps/vps-size.png" alt="VPS sizing" class="inline"/>
 
-## Hostnames & number of VPS
+## Hostname
 
-Choose how many instances you want and click "Deploy Now".
+Choose 1 instance and click "Deploy Now".
 
 <img src="docs/images/masternode_vps/hostnames--amp--number-of-vps.png" alt="VPS sizing" class="inline"/>
 
 ## Installation of PuTTY as SSH client (Windows)
+
 If you are running your wallet from Windows, install PuTTY while the server is being set up. You can download PuTTY from here: http://www.putty.org/. Skip this step if you are using a Mac--you will use the built in Terminal application instead.
 
 Once PuTTY is installed, return to the Vultr dashboard to get the login details by clicking on the ... to the right of your server, and select Server Details.
@@ -197,6 +198,7 @@ The _install.sh_ script support the following parameters:
 After the masternodes have been installed. 
 
 **A) Generate Private Key**
+
 Note: The private key will need to be added to the airin_n1.conf file (located on the vps) and the masternode.conf file (located on the Airin Wallet) 
 
 ```bash
@@ -210,14 +212,16 @@ nano /etc/masternodes/airin_n1.conf
 ```
 
 **C) Add IP**
-Replace the following lines with your information:
+
+Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
 
 ```
 bind=YOUR_VPS_IPV4_ADDRESS:18808
 ```
 
 **D) Add Private Key**
-Replace the following lines with your information:
+
+Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
 
 ```
 masternodeprivkey=YOUR_MASTERNODE_PRIVATE_KEY
@@ -237,7 +241,7 @@ For each additional masternode created, repeat steps A - E with the following ch
 
 * Use the added IPv4 addresses created in Vultr earlier for each added masternode. 
 
-**Note: IP addresses cannot not be used more than once.**
+Note: IP addresses cannot not be used more than once.
 
 **G) Reboot**
 
