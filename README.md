@@ -298,25 +298,17 @@ nano /etc/masternodes/airin_n1.conf
 
 Replace [#NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER:::1] with ip address of your vps:
 
-```
-bind=[#NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER:::1]:18808
-```
-
-<img src="docs/images/masternode_vps/add-ipv4-address.png" alt="add ip address" class="inline"/>
+<img src="docs/images/masternode_vps/added-ipv4-address.png" alt="add ip address" class="inline"/>
 
 ## C. Add Private Key
 
 Replace HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1 with your private key:
 
-```
-masternodeprivkey=HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1
-```
-
-<img src="docs/images/masternode_vps/add-private-key.png" alt="add private key" class="inline"/>
+<img src="docs/images/masternode_vps/added-private-key.png" alt="add private key" class="inline"/>
 
 **IP address and Private Key Added**
 
-<img src="docs/images/masternode_vps/add-ipv4-address.png" alt="add ip address" class="inline"/>
+<img src="docs/images/masternode_vps/added-ipv4-address.png" alt="add ip address" class="inline"/>
 
 ## D. Save and Close the File
 
@@ -354,9 +346,9 @@ Activate the masternodes by running the following command:
 /usr/local/bin/activate_masternodes_airin
 ```
 
-<img src="docs/images/masternode_vps/start-masternodes.png" alt="start masternodes" class="inline"/>
-
 The masternode daemons will start and begin loading the Airin blockchain.
+
+<img src="docs/images/masternode_vps/start-masternodes.png" alt="start masternodes" class="inline"/>
 
 ## Finishing Wallet Configuration & Activate Masternodes
 To activate your nodes from your wallet, one of the last steps is to add a line for the masternode in the masternode.conf file. This file has the following format, with each value separated with a space:
