@@ -142,13 +142,13 @@ ssh -l root <IP address>
 
 ## Installation on VPS
 
-### A. Login 
+## Login 
 
 Login to your newly installed node as "root".
 
 <img src="docs/images/masternode_vps/first-ssh-session.png" alt="VPS sizing" class="inline"/>
 
-### B. Edit Network Interfaces
+## Edit Network Interfaces
 
 ```bash
 nano /etc/network/interfaces
@@ -161,32 +161,32 @@ Copy and paste the network configuration that was previously saved in the text e
 Remember: You cannot Ctrl+V to paste in the console. Either right click the mouse or type shift+insert (sometimes
 on keyboard it will just be INS key)
 
-### C. Save and Close the File
+## Save and Close the File
 
 ```
 CTRL+X → Y → ENTER
 ```
 
-### D. Configure Networking Changes
+## Configure Networking Changes
 
 ```bash
 ifup ens3:1
 ifup ens3:2
 ```
 
-### E. Clone the Github Repository to Install Masternodes
+## Clone the Github Repository to Install Masternodes
 
 ```bash
 git clone https://github.com/sdemmitt/vps.git && cd vps
 ```
 
-### F. Install 3 Airin masternodes using IPv4 and configure sentinel monitoring:
+## Install 3 Airin masternodes using IPv4 and configure sentinel monitoring:
 
 ```bash
 ./install.sh -p airin -n 4 -c 3 -s 
 ```
 
-### Additional examples
+## Additional examples
 
 **Install 2 Airin masternodes using IPv4 and configure sentinel monitoring:**
 
@@ -200,7 +200,7 @@ git clone https://github.com/sdemmitt/vps.git && cd vps
 ./install.sh -p airin -n 4 -c 1 -s
 ```
 
-### Options
+## Options
 
 The _install.sh_ script support the following parameters:
 
@@ -217,7 +217,7 @@ The _install.sh_ script support the following parameters:
 | --startnodes | -x           | --                  | starts masternode(s) after installation                             |
 
 ## Configure Airin Wallet
-### A. Create Collateral Transaction
+## Create Collateral Transaction
 Once the wallet is open on your local computer, generate a new receive address and label it however you want to identify your masternode rewards (e.g., Airin-MN-1). This label will show up in your transactions each time you receive a block reward.
 
 Click the Request payment button, and copy the address.
@@ -228,7 +228,7 @@ Now go to the Send tab, paste the copied address, and send *exactly* 10,000 PHR 
 
 <img src="docs/images/masternode_vps/step1-send10kphr.png" alt="sending 10kPHR" class="inline"/>
 
-### B. Generate Masternode Private Key
+## Generate Masternode Private Key
 Go to the **[Tools > Debug Console]** and enter these commands below:
 
 ```bash
@@ -242,7 +242,7 @@ Copy this value to a text file. It will be needed for both the airin configurati
 
 If you are setting up multiple masternodes, repeat this step for each one. Each time you run the masternode genkey command it will give you a new private key--it doesn't matter which one you use, but it is important that it is unique for each masternode and that the VPS airin configuration file and wallet masternode configuration file match (see below).
 
-### C. Masternode Outputs
+## Masternode Outputs
 
 This will give you the rest of the information you need to configure your masternode in your Airin wallet--the transaction ID and the output index.
 
@@ -266,13 +266,13 @@ You only have a few steps remaining to complete your masternode configuration.
 ## Configure masternode configuration files
 Since this installation method supports multiple masternodes, the airin configuration files have a node number added to them (e.g., airin_n1.conf, airin_n2.conf, airin_n3.conf), stored in the /etc/masternodes directory. If you have a single masternode on the VPS, you will only need to edit /etc/masternodes/airin_n1.conf.
 
-### A. Edit Configuration File
+## A. Edit Configuration File
 
 ```bash
 nano /etc/masternodes/airin_n1.conf
 ```
 
-### B. Add IP
+## B. Add IP
 
 Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
 
@@ -280,7 +280,7 @@ Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
 bind=YOUR_VPS_IPV4_ADDRESS:18808
 ```
 
-### C. Add Private Key
+## C. Add Private Key
 
 Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
 
@@ -288,15 +288,15 @@ Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
 masternodeprivkey=YOUR_MASTERNODE_PRIVATE_KEY
 ```
 
-### D. Save and Close the File
+## D. Save and Close the File
 
 ```
 CTRL+X → Y → ENTER
 ```
 
-### E. Repeat Steps A - D
+## E. Repeat Steps A -> D
 
-For each additional masternode created, repeat steps A - D with the following changes:
+For each additional masternode created, repeat steps A -> D with the following changes:
 
 * Replace 'airin_n1.conf' with 'airin_n2.conf' or 'airin_n3.conf'
 
@@ -304,7 +304,7 @@ For each additional masternode created, repeat steps A - D with the following ch
 
 Note: IP addresses cannot not be used more than once.
 
-### F. Restart VPS
+## F. Restart VPS
 
 ```bash
 sudo reboot
@@ -344,6 +344,7 @@ The image below shows another example using an IPv4 IP address. If you followed 
 <img src="docs/images/masternode_vps/masternode-conf.png" alt="editing masternode.conf" class="inline"/>
 
 If you are running multiple masternodes, you need to add one of these lines for each masternode, and make sure the private key on each line matches the corresponding private key you entered in the VPS airin configuration file for that masternode.
+
 ## Check Status of Masternodes on the VPS
 
 If you want to check the info of your masternode, the best way is currently running the cli e.g. for $AIRIN via
