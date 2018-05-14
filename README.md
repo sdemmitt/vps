@@ -156,13 +156,19 @@ Run the following command:
 nano /etc/network/interfaces
 ```
 
-Delete each line shown. (Press Del Key)
+Delete each line. (Press and hold 'Del' Key)
+
 <img src="docs/images/masternode_vps/default-network-configuration.png" alt="Default Network" class="inline"/>
+
+File should be empty as shown.
+
 <img src="docs/images/masternode_vps/delete-network-configuration.png" alt="Delete Network" class="inline"/>
 
-Copy and paste the network configuration that was previously saved in the text editor. (from - 'Retrieve Networking Configuration' step)
+Copy the network configuration that was previously saved in the text editor. (from - 'Retrieve Networking Configuration' step)
 
 <img src="docs/images/masternode_vps/copy-network-configuration.png" alt="Copy Network" class="inline"/>
+
+Paste the network configuration into /etc/network/interfaces
 
 Remember: You cannot Ctrl+V to paste in the console. Either right click the mouse or type shift+insert (sometimes
 on keyboard it will just be INS key)
@@ -182,6 +188,8 @@ ifup ens3:1
 ifup ens3:2
 ```
 
+<img src="docs/images/masternode_vps/configure-networking.png" alt="Configure Networking" class="inline"/>
+
 ## Clone the Github Repository to Install Masternodes
 
 ```bash
@@ -193,6 +201,7 @@ git clone https://github.com/sdemmitt/vps.git && cd vps
 ```bash
 ./install.sh -p airin -n 4 -c 3 -s 
 ```
+<img src="docs/images/masternode_vps/install-3-airin-masternodes.png" alt="Install 3 Airin Masternodes" class="inline"/>
 
 ## Additional examples
 
@@ -230,11 +239,12 @@ Once the wallet is open on your local computer, generate a new receive address a
 
 Click the Request payment button, and copy the address.
 
-<img src="docs/images/masternode_vps/step1-newaddress.png" alt="making new address" class="inline"/>
+<img src="docs/images/masternode_vps/new-address.png" alt="making new address" class="inline"/>
+<img src="docs/images/masternode_vps/new-address-2.png" alt="making new address" class="inline"/>
 
 Now go to the Send tab, paste the copied address, and send *exactly* 1,000 AIRIN to it in a single transaction. Wait for it to confirm on the blockchain. This is the collateral transaction that will be locked and paired with your new masternode. If you are setting up more than one masternode at one time, repeat this process for each one.
 
-<img src="docs/images/masternode_vps/step1-send1k-airin.png" alt="sending 1k Airin" class="inline"/>
+<img src="docs/images/masternode_vps/send-1k-airin.png" alt="sending 1k Airin" class="inline"/>
 
 ## Generate Masternode Private Key
 Go to the **[Tools > Debug Console]** and enter these commands below:
@@ -244,11 +254,13 @@ masternode genkey
 ```
 This will produce a masternode private key:
 
-<img src="docs/images/masternode_vps/step2-masternodegenkey.png" alt="generating masternode private key" class="inline"/>
+<img src="docs/images/masternode_vps/generate-private-key.png" alt="generating masternode private key" class="inline"/>
 
 Copy this value to a text file. It will be needed for both the airin configuration file on the masternode VPS, and the masternode configuration file on the computer with the controlling Airin wallet.
 
 If you are setting up multiple masternodes, repeat this step for each one. Each time you run the masternode genkey command it will give you a new private key--it doesn't matter which one you use, but it is important that it is unique for each masternode and that the VPS airin configuration file and wallet masternode configuration file match (see below).
+
+<img src="docs/images/masternode_vps/generate-3-private-keys.png" alt="generating masternode private keys" class="inline"/>
 
 ## Masternode Outputs
 
@@ -257,8 +269,7 @@ This will give you the rest of the information you need to configure your master
 ```bash
 masternode outputs
 ```
-
-<img src="docs/images/masternode_vps/step3-masternodeoutputs.png" alt="getting transaction id" class="inline"/>
+<img src="docs/images/masternode_vps/masternode-outputs.png" alt="getting transaction id" class="inline"/>
 
 The long string of characters is the *Transaction ID* for your masternode collateral transaction. The number after the long string is the *Index*. Copy and paste these into the text file next to the private key you generated in Step 2.
 
@@ -291,6 +302,8 @@ Replace [#NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER:::1] with ip address of your vp
 bind=[#NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER:::1]:18808
 ```
 
+<img src="docs/images/masternode_vps/add-ipv4-address.png" alt="add ip address" class="inline"/>
+
 ## C. Add Private Key
 
 Replace HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1 with your private key:
@@ -298,6 +311,12 @@ Replace HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1 with your private k
 ```
 masternodeprivkey=HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1
 ```
+
+<img src="docs/images/masternode_vps/add-private-key.png" alt="add private key" class="inline"/>
+
+**IP address and Private Key Added**
+
+<img src="docs/images/masternode_vps/add-ipv4-address.png" alt="add ip address" class="inline"/>
 
 ## D. Save and Close the File
 
@@ -334,6 +353,8 @@ Activate the masternodes by running the following command:
 ```bash
 /usr/local/bin/activate_masternodes_airin
 ```
+
+<img src="docs/images/masternode_vps/start-masternodes.png" alt="start masternodes" class="inline"/>
 
 The masternode daemons will start and begin loading the Airin blockchain.
 
