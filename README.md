@@ -150,16 +150,24 @@ Login to your newly installed node as "root".
 
 ## Edit Network Interfaces
 
+Run the following command:
+
 ```bash
 nano /etc/network/interfaces
 ```
 
 Delete each line shown. (Press Del Key)
+<img src="docs/images/masternode_vps/default-network-configuration.png" alt="Default Network" class="inline"/>
+<img src="docs/images/masternode_vps/delete-network-configuration.png" alt="Delete Network" class="inline"/>
 
 Copy and paste the network configuration that was previously saved in the text editor. (from - 'Retrieve Networking Configuration' step)
 
+<img src="docs/images/masternode_vps/copy-network-configuration.png" alt="Copy Network" class="inline"/>
+
 Remember: You cannot Ctrl+V to paste in the console. Either right click the mouse or type shift+insert (sometimes
 on keyboard it will just be INS key)
+
+<img src="docs/images/masternode_vps/paste-network-configuration.png" alt="Paste Network" class="inline"/>
 
 ## Save and Close the File
 
@@ -224,9 +232,9 @@ Click the Request payment button, and copy the address.
 
 <img src="docs/images/masternode_vps/step1-newaddress.png" alt="making new address" class="inline"/>
 
-Now go to the Send tab, paste the copied address, and send *exactly* 10,000 PHR to it in a single transaction. Wait for it to confirm on the blockchain. This is the collateral transaction that will be locked and paired with your new masternode. If you are setting up more than one masternode at one time, repeat this process for each one.
+Now go to the Send tab, paste the copied address, and send *exactly* 1,000 AIRIN to it in a single transaction. Wait for it to confirm on the blockchain. This is the collateral transaction that will be locked and paired with your new masternode. If you are setting up more than one masternode at one time, repeat this process for each one.
 
-<img src="docs/images/masternode_vps/step1-send10kphr.png" alt="sending 10kPHR" class="inline"/>
+<img src="docs/images/masternode_vps/step1-send1k-airin.png" alt="sending 1k Airin" class="inline"/>
 
 ## Generate Masternode Private Key
 Go to the **[Tools > Debug Console]** and enter these commands below:
@@ -268,24 +276,27 @@ Since this installation method supports multiple masternodes, the airin configur
 
 ## A. Edit Configuration File
 
+Run the following commands:
+
 ```bash
+sudo apt-get install nano
 nano /etc/masternodes/airin_n1.conf
 ```
 
 ## B. Add IP
 
-Replace YOUR_VPS_IPV4_ADDRESS with ip address of your vps:
+Replace [#NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER:::1] with ip address of your vps:
 
 ```
-bind=YOUR_VPS_IPV4_ADDRESS:18808
+bind=[#NEW_IPv4_ADDRESS_FOR_MASTERNODE_NUMBER:::1]:18808
 ```
 
 ## C. Add Private Key
 
-Replace YOUR_MASTERNODE_PRIVATE_KEY with your private key:
+Replace HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1 with your private key:
 
 ```
-masternodeprivkey=YOUR_MASTERNODE_PRIVATE_KEY
+masternodeprivkey=HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1
 ```
 
 ## D. Save and Close the File
@@ -300,11 +311,15 @@ For each additional masternode created, repeat steps A -> D with the following c
 
 * Replace 'airin_n1.conf' with 'airin_n2.conf' or 'airin_n3.conf'
 
-* Use the added IPv4 addresses created in Vultr earlier for each added masternode. 
+* Use the 2nd and 3rd IPv4 addresses created in Vultr earlier for each configuration file.
 
 Note: IP addresses cannot not be used more than once.
 
+* Use the 2nd and 3rd private key that was created earlier in the Airin wallet for each configuration file.
+
 ## F. Restart VPS
+
+Run the following command:
 
 ```bash
 sudo reboot
@@ -327,7 +342,7 @@ To activate your nodes from your wallet, one of the last steps is to add a line 
 
 * alias IP:Port masternodeprivatekey collateral_transaction_ID collateral_output_index
 * alias - A short name you use to identify the masternode, you can choose this name as long as it is without spaces (e.g., Airin-MN-1)
-* IP:Port - The IP address (either IPv6 or IPv4) and the Port where the masternode is running, separated by a colon (:). You copied this from the airin.conf file on the VPS.
+* IP:Port - The IPv4 address and the Port where the masternode is running, separated by a colon (:). You copied this from the airin.conf file on the VPS.
 * collateral_transaction_ID: This is the transaction ID you copied from masternode outputs.
 * collateral_output_index: This is the index you copied from masternode outputs.
 
@@ -336,7 +351,7 @@ Add the MN conf line, like the example below to the masternode.conf file. Save i
 
 example.
 ```
-Airin-MN-1 [2001:19f0:5001:ca6:2085::1]:11771 88xrxxxxxxxxxxxxxxxxxxxxxxx7K 6b4c9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx7ee23 0
+Airin-MN-1 8.9.5.91:11771 88xrxxxxxxxxxxxxxxxxxxxxxxx7K 6b4c9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx7ee23 0
 ```
 
 The image below shows another example using an IPv4 IP address. If you followed this guide you are probably using an IPv6 address that looks like the line above.
