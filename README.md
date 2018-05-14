@@ -309,7 +309,7 @@ Replace HERE_GOES_YOUR_MASTERNODE_KEY_FOR_MASTERNODE_airin_1 with your private k
 
 **IP address and Private Key Added**
 
-<img src="docs/images/masternode_vps/added-ipv4-address.png" alt="add ip address" class="inline"/>
+<img src="docs/images/masternode_vps/ip-address-and-private-key-added.png" alt="added ip address and private key" class="inline"/>
 
 ## D. Save and Close the File
 
