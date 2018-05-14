@@ -39,7 +39,7 @@ You can use the following referral link to sign up with Vultr for VPS hosting:
 
 First, create a new VPS by clicking that small "+" button.
 
-<img src="docs/images/masternode_vps/deploy-a-new-system.png" alt="VPS creation" class="inline"/>
+<img src="docs/images/masternode_vps/deploy-a-new-system2.png" alt="VPS creation" class="inline"/>
 
 ## Location Choice
 
