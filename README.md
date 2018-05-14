@@ -269,11 +269,12 @@ This will give you the rest of the information you need to configure your master
 ```bash
 masternode outputs
 ```
-<img src="docs/images/masternode_vps/masternode-outputs.png" alt="getting transaction id" class="inline"/>
 
 The long string of characters is the *Transaction ID* for your masternode collateral transaction. The number after the long string is the *Index*. Copy and paste these into the text file next to the private key you generated in Step 2.
 
-If you have multiple masternodes in the same wallet and have done the 10,000 PHR transactions for each of them, masternode outputs will display transaction IDs and indexes for each one. You can choose which private key to go with each transaction ID and index, as long as they are all different, and you make sure the corresponding lines in masternode.conf and the VPS airin configuration files match (see below).
+If you have multiple masternodes in the same wallet and have done the 1,000 AIRIN transactions for each of them, masternode outputs will display transaction IDs and indexes for each one. You can choose which private key to go with each transaction ID and index, as long as they are all different, and you make sure the corresponding lines in masternode.conf and the VPS airin configuration files match (see below).
+
+<img src="docs/images/masternode_vps/masternode-outputs.png" alt="getting transaction id" class="inline"/>
 
 ## After Installation on VPS
 
@@ -367,11 +368,11 @@ example.
 Airin-MN-1 8.9.5.91:11771 88xrxxxxxxxxxxxxxxxxxxxxxxx7K 6b4c9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx7ee23 0
 ```
 
-The image below shows another example using an IPv4 IP address. If you followed this guide you are probably using an IPv6 address that looks like the line above.
-
-<img src="docs/images/masternode_vps/masternode-conf.png" alt="editing masternode.conf" class="inline"/>
+The image below shows another example using an IPv4 IP address. If you followed this guide you are probably using an IPv4 address that looks like the line above.
 
 If you are running multiple masternodes, you need to add one of these lines for each masternode, and make sure the private key on each line matches the corresponding private key you entered in the VPS airin configuration file for that masternode.
+
+<img src="docs/images/masternode_vps/masternode-conf.png" alt="editing masternode.conf" class="inline"/>
 
 ## Check Status of Masternodes on the VPS
 
